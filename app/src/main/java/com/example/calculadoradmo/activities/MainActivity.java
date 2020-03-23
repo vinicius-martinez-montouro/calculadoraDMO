@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     erase("",false);
                     break;
                 }
-                case "ce"{
+                case "ce":{
                     cleanLastOperation();
                     break;
                 }
@@ -201,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             erase("",false);
         }else{
             if(afterOperationValue.equals("")){
+                calculadora.c();
                 operation = null;
             }else{
                 operation = "";
