@@ -17,4 +17,6 @@
     <string name="multiply">X</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
+    <string name="erase_last">CE</string>
+    <string name="pow">^</string>
 </resources>

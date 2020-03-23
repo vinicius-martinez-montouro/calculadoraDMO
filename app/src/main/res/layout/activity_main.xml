@@ -100,6 +100,20 @@
                 android:textStyle="bold" />
 
             <!--sessão 2 -->
+            <Button
+                android:id="@+id/button_erase_last"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
+                android:text="@string/erase_last"
+                android:layout_toEndOf="@id/button_erase"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/default_text_size"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button_8"
@@ -150,6 +164,19 @@
                 android:textStyle="bold" />
 
             <!--sessão 3 -->
+            <Button
+                android:id="@+id/button_pow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/button_multiply"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
+                android:text="@string/pow"
+                android:textAlignment="center"
+                android:textSize="@dimen/default_text_size"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button_9"

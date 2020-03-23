@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button_dot).setOnClickListener(this);
         findViewById(R.id.button_equal).setOnClickListener(this);
         findViewById(R.id.button_erase).setOnClickListener(this);
+        findViewById(R.id.button_erase_last).setOnClickListener(this);
 
+        findViewById(R.id.button_pow).setOnClickListener(this);
         findViewById(R.id.button_division).setOnClickListener(this);
         findViewById(R.id.button_multiply).setOnClickListener(this);
         findViewById(R.id.button_minus).setOnClickListener(this);
@@ -73,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 case "c": {
                     erase("",false);
+                    break;
+                }
+                case "ce"{
+                    cleanLastOperation();
                     break;
                 }
                 case "=":{
@@ -104,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return Constantes.SUBTRACAO;
             case "/":
                 return Constantes.DIVISAO;
+            case "^":
+                return Constantes.POTENCIA;
             default:
                 return Constantes.MULTIPLICACAO;
         }
@@ -112,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void addOperation(String operationValue){
         if(afterOperationValue.equals("")){
             operation = operationValue;
-            float result = calculadora.calcular(getConstants(operation), Float.parseFloat(this.value));
+            Double result = calculadora.calcular(getConstants(operation), Float.parseFloat(this.value));
             hasDot = false;
             value = getFormatedValue(result);
         }else{
@@ -122,13 +130,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getResult(){
-        float result = getFinalResult();
+        Double result = getFinalResult();
         erase(getFormatedValue(result), result % 1 != 0);
     }
 
-    private float getFinalResult(){
+    private Double getFinalResult(){
         if(operation == null){
-            return Float.parseFloat(value);
+            return Double.parseDouble(value);
         }
         return calculadora
                 .calcular(Constantes.RESULTADO,Float.parseFloat(this.afterOperationValue));
@@ -141,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return this.afterOperationValue.equals("");
     }
 
-    private String getFormatedValue(Float value){
+    private String getFormatedValue(Double value){
         if(value % 1 == 0){
             return new DecimalFormat("#").format(value);
         }
@@ -186,5 +194,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void updateValue(String value){
         resultEditText.setText(value);
+    }
+
+    private void cleanLastOperation(){
+        if(operation == null){
+            erase("",false);
+        }else{
+            if(afterOperationValue.equals("")){
+                operation = null;
+            }else{
+                operation = "";
+            }
+        }
     }
 }

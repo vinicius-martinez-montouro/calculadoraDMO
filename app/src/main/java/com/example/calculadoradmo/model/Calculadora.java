@@ -5,7 +5,7 @@ import com.example.calculadoradmo.constants.Constantes;
 public class Calculadora {
 
     private static Calculadora sCalculadora = null;
-    private float memoria;
+    private double memoria;
     private int operacao;
 
     private Calculadora() {
@@ -13,18 +13,18 @@ public class Calculadora {
     }
 
     public static Calculadora getInstance() {
-        if(sCalculadora == null){
+        if (sCalculadora == null) {
             sCalculadora = new Calculadora();
         }
         return sCalculadora;
     }
 
-    public void c(){
+    public void c() {
         memoria = 0;
         operacao = Constantes.NULO;
     }
 
-    public float calcular(int operacao, float valor) {
+    public double calcular(int operacao, double valor) {
         if (this.operacao == Constantes.NULO) {
             this.operacao = operacao;
             this.memoria = valor;
@@ -42,6 +42,8 @@ public class Calculadora {
                 case Constantes.DIVISAO:
                     memoria /= valor;
                     break;
+                case Constantes.POTENCIA:
+                    memoria = Math.pow((memoria), (valor));
                 default:
                     break;
             }
